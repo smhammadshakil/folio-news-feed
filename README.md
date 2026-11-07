@@ -4,6 +4,39 @@ Folio is a personal news desk. It pulls articles from The Guardian, The New York
 
 The interface is React, TypeScript, and Chakra UI, arranged with Atomic Design. A small Hono server holds the API keys and returns one shared article shape. With no keys, the same screens run on bundled sample articles.
 
+```mermaid
+flowchart LR
+  subgraph desk [Your desk]
+    UI[React app]
+  end
+  subgraph folio [Folio]
+    API[Hono API]
+  end
+  subgraph wires [News wires]
+    G[The Guardian]
+    N[New York Times]
+    W[NewsAPI.org]
+  end
+  UI -->|"GET /api/articles"| API
+  API --> G
+  API --> N
+  API --> W
+```
+
+The browser only talks to Folio. API keys stay on the server.
+
+```mermaid
+flowchart TB
+  Page[Page]
+  Template[Template]
+  Organism[Organism]
+  Molecule[Molecule]
+  Atom[Atom]
+  Page --> Template --> Organism --> Molecule --> Atom
+```
+
+Pages fetch and route. Templates lay out the shell. Organisms are sections such as the card, the filter panel, and the toolbar. Molecules and atoms are the smaller pieces those sections are built from.
+
 ## Add a local env file
 
 Create `.env` in the project folder before you start the app. Copy the example, then paste your own keys into it. The file stays on your machine and is not committed.
