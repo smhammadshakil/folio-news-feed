@@ -49,6 +49,8 @@ The app proxies `/api` to the API. `npm test` runs the unit tests. `npm start` s
 
 ## Plan
 
+How the take-home brief was met, including the three sources and where DRY, KISS, and SOLID show up in the code, is in [Challenge guidelines](docs/challenge-guidelines.md).
+
 The build notes live in `docs/`:
 
 1. [Requirements](docs/01-requirements.md)
