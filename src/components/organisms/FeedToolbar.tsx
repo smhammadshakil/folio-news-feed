@@ -10,16 +10,12 @@ export function FeedToolbar({
   onSearchSubmit,
   onOpenFilters,
   onOpenPreferences,
-  showClearFilters,
-  onClearFilters,
 }: {
   keyword: string;
   onKeywordChange: (value: string) => void;
   onSearchSubmit: () => void;
   onOpenFilters: () => void;
   onOpenPreferences: () => void;
-  showClearFilters: boolean;
-  onClearFilters: () => void;
 }) {
   return (
     <Flex direction="column" gap="3" py="3">
@@ -32,14 +28,7 @@ export function FeedToolbar({
             </RouterLink>
           </Link>
         </Heading>
-        <Flex gap="2" align="center" flexShrink="0">
-          {showClearFilters ? (
-            <Button variant="outline" borderColor="line" minH="44px" onClick={onClearFilters}>
-              Clear filters
-            </Button>
-          ) : null}
-          <ColorModeButton />
-        </Flex>
+        <ColorModeButton />
       </Flex>
       <Flex gap="2" align="center">
         <Box flex="1">

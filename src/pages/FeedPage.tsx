@@ -140,16 +140,6 @@ export function FeedPage() {
     setKeyword("");
   }
 
-  const showClearFilters = Boolean(
-    query &&
-      (query.q ||
-        query.from ||
-        query.to ||
-        !sameMembers(query.sources, preferences.sources) ||
-        !sameMembers(query.categories, preferences.categories) ||
-        !sameMembers(query.authors, preferences.authors)),
-  );
-
   function openPreferences() {
     if (query) {
       setDraft({ sources: [...query.sources], categories: [...query.categories], authors: [...query.authors] });
@@ -180,8 +170,6 @@ export function FeedPage() {
             onSearchSubmit={() => query && commit({ ...query, q: keyword.trim() || undefined, page: 1 })}
             onOpenFilters={() => setFiltersOpen(true)}
             onOpenPreferences={openPreferences}
-            showClearFilters={showClearFilters}
-            onClearFilters={clearFilters}
           />
         }
         sidebar={query ? <FilterPanel query={query} sources={catalog} onChange={commit} /> : null}
@@ -302,12 +290,6 @@ function classify(page: ArticlePage, total: number): FeedStatus {
   if (total === 0) return "empty";
   if (errors.length > 0) return "partial";
   return "ready";
-}
-
-function sameMembers(left: readonly string[], right: readonly string[]): boolean {
-  if (left.length !== right.length) return false;
-  const bag = new Set(right);
-  return left.every((item) => bag.has(item));
 }
 
 function mergeUnique(current: Article[], incoming: Article[]): Article[] {
