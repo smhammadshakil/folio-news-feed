@@ -1,0 +1,143 @@
+[
+  {
+    "id": "newsapi:1",
+    "title": "Shipping lanes keep a storm watch",
+    "summary": "Sample copy about freighters waiting out high seas.",
+    "url": "https://newsapi.org/folio/sample/newsapi/1",
+    "imageUrl": "https://picsum.photos/seed/folio-news-1/800/450",
+    "publishedAt": "2026-11-06T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "Reuters",
+    "author": "Helena Ortiz",
+    "category": "world"
+  },
+  {
+    "id": "newsapi:2",
+    "title": "Voters queue before the polls open",
+    "summary": "Sample copy about an early start in two districts.",
+    "url": "https://newsapi.org/folio/sample/newsapi/2",
+    "imageUrl": "https://picsum.photos/seed/folio-news-2/800/450",
+    "publishedAt": "2026-11-04T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "Associated Press",
+    "category": "politics"
+  },
+  {
+    "id": "newsapi:3",
+    "title": "Oil steadies as traders wait",
+    "summary": "Sample copy about a quiet session and a full calendar.",
+    "url": "https://newsapi.org/folio/sample/newsapi/3",
+    "imageUrl": "https://picsum.photos/seed/folio-news-3/800/450",
+    "publishedAt": "2026-11-02T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "Bloomberg",
+    "author": "Chris Adelayo",
+    "category": "business"
+  },
+  {
+    "id": "newsapi:4",
+    "title": "A browser experiment trims the tabs",
+    "summary": "Sample copy about a research build with fewer windows.",
+    "url": "https://newsapi.org/folio/sample/newsapi/4",
+    "imageUrl": "https://picsum.photos/seed/folio-news-4/800/450",
+    "publishedAt": "2026-10-31T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "Wired",
+    "category": "technology"
+  },
+  {
+    "id": "newsapi:5",
+    "title": "Field notes from a dry lake bed",
+    "summary": "Sample copy about a team measuring what the mud kept.",
+    "url": "https://newsapi.org/folio/sample/newsapi/5",
+    "imageUrl": "https://picsum.photos/seed/folio-news-5/800/450",
+    "publishedAt": "2026-10-29T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "Nature",
+    "author": "Noah Berg",
+    "category": "science"
+  },
+  {
+    "id": "newsapi:6",
+    "title": "Clinics share a plain-language discharge note",
+    "summary": "Sample copy about instructions patients can reread.",
+    "url": "https://newsapi.org/folio/sample/newsapi/6",
+    "imageUrl": "https://picsum.photos/seed/folio-news-6/800/450",
+    "publishedAt": "2026-10-27T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "STAT",
+    "author": "Leila Costa",
+    "category": "health"
+  },
+  {
+    "id": "newsapi:7",
+    "title": "The underdogs take a first-half lead",
+    "summary": "Sample copy about a cup tie that stayed open.",
+    "url": "https://newsapi.org/folio/sample/newsapi/7",
+    "imageUrl": "https://picsum.photos/seed/folio-news-7/800/450",
+    "publishedAt": "2026-10-25T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "ESPN",
+    "author": "Mina Rahman",
+    "category": "sports"
+  },
+  {
+    "id": "newsapi:8",
+    "title": "An essay on front pages in print",
+    "summary": "Sample copy about paper that still sets the day's order.",
+    "url": "https://newsapi.org/folio/sample/newsapi/8",
+    "imageUrl": "https://picsum.photos/seed/folio-news-8/800/450",
+    "publishedAt": "2026-10-23T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "The Atlantic",
+    "category": "culture"
+  },
+  {
+    "id": "newsapi:9",
+    "title": "A guest column on bylines",
+    "summary": "Sample copy about naming the reporter in the first screen.",
+    "url": "https://newsapi.org/folio/sample/newsapi/9",
+    "imageUrl": "https://picsum.photos/seed/folio-news-9/800/450",
+    "publishedAt": "2026-10-21T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "The Washington Post",
+    "author": "Owen Blake",
+    "category": "opinion"
+  },
+  {
+    "id": "newsapi:10",
+    "title": "Morning brief: ferries resume",
+    "summary": "Sample copy about crossings returning after fog.",
+    "url": "https://newsapi.org/folio/sample/newsapi/10",
+    "imageUrl": "https://picsum.photos/seed/folio-news-10/800/450",
+    "publishedAt": "2026-10-19T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "BBC",
+    "author": "Mina Rahman",
+    "category": "world"
+  },
+  {
+    "id": "newsapi:11",
+    "title": "A camera update shortens the wait",
+    "summary": "Sample copy about a firmware note and a faster shutter.",
+    "url": "https://newsapi.org/folio/sample/newsapi/11",
+    "imageUrl": "https://picsum.photos/seed/folio-news-11/800/450",
+    "publishedAt": "2026-10-17T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "The Verge",
+    "author": "Jonah Ellis",
+    "category": "technology"
+  },
+  {
+    "id": "newsapi:12",
+    "title": "Desks close the week evenly",
+    "summary": "Sample copy about indexes that barely moved.",
+    "url": "https://newsapi.org/folio/sample/newsapi/12",
+    "imageUrl": "https://picsum.photos/seed/folio-news-12/800/450",
+    "publishedAt": "2026-10-15T09:15:00.000Z",
+    "source": "newsapi",
+    "sourceName": "Financial Times",
+    "author": "Priya Shah",
+    "category": "business"
+  }
+]

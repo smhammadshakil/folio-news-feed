@@ -1,0 +1,143 @@
+[
+  {
+    "id": "nyt:1",
+    "title": "City hall posts the winter shelter map",
+    "summary": "Sample copy about extra beds and extended hours.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/1",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-1/800/450",
+    "publishedAt": "2026-11-07T08:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Mina Rahman",
+    "category": "world"
+  },
+  {
+    "id": "nyt:2",
+    "title": "A hearing on the transit budget runs long",
+    "summary": "Sample copy about fares, delays, and a divided room.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/2",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-2/800/450",
+    "publishedAt": "2026-11-05T09:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Jonah Ellis",
+    "category": "politics"
+  },
+  {
+    "id": "nyt:3",
+    "title": "Shoppers meet the season with shorter lists",
+    "summary": "Sample copy about cautious spending at big stores.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/3",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-3/800/450",
+    "publishedAt": "2026-11-03T10:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Priya Shah",
+    "category": "business"
+  },
+  {
+    "id": "nyt:4",
+    "title": "Engineers show a phone that repairs itself",
+    "summary": "Sample copy about a demo that still needs a year.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/4",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-4/800/450",
+    "publishedAt": "2026-11-01T11:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Helena Ortiz",
+    "category": "technology"
+  },
+  {
+    "id": "nyt:5",
+    "title": "Labs share a clearer picture of the comet",
+    "summary": "Sample copy about an image stitched from three nights.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/5",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-5/800/450",
+    "publishedAt": "2026-10-30T12:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "category": "science"
+  },
+  {
+    "id": "nyt:6",
+    "title": "Hospitals compare notes on the flu ward",
+    "summary": "Sample copy about staffing before the holidays.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/6",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-6/800/450",
+    "publishedAt": "2026-10-28T08:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Chris Adelayo",
+    "category": "health"
+  },
+  {
+    "id": "nyt:7",
+    "title": "The marathon changes its start by two blocks",
+    "summary": "Sample copy about a course tweak and a new clock.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/7",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-7/800/450",
+    "publishedAt": "2026-10-26T09:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "category": "sports"
+  },
+  {
+    "id": "nyt:8",
+    "title": "A chef writes the menu in pencil",
+    "summary": "Sample copy about a dining room that changes nightly.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/8",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-8/800/450",
+    "publishedAt": "2026-10-24T10:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Noah Berg",
+    "category": "culture"
+  },
+  {
+    "id": "nyt:9",
+    "title": "Opinion: bring back the city desk pencil",
+    "summary": "Sample copy in favor of slower edits.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/9",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-9/800/450",
+    "publishedAt": "2026-10-22T11:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Leila Costa",
+    "category": "opinion"
+  },
+  {
+    "id": "nyt:10",
+    "title": "Bridges reopen after the wind warning",
+    "summary": "Sample copy about a morning commute returning.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/10",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-10/800/450",
+    "publishedAt": "2026-10-20T12:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Mina Rahman",
+    "category": "world"
+  },
+  {
+    "id": "nyt:11",
+    "title": "A gallery lends the sketches, not the oils",
+    "summary": "Sample copy about a traveling show of studies.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/11",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-11/800/450",
+    "publishedAt": "2026-10-18T08:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "category": "culture"
+  },
+  {
+    "id": "nyt:12",
+    "title": "Well: a shorter walk still counts",
+    "summary": "Sample copy about neighborhood loops and step counts.",
+    "url": "https://www.nytimes.com/folio/sample/nyt/12",
+    "imageUrl": "https://picsum.photos/seed/folio-nyt-12/800/450",
+    "publishedAt": "2026-10-16T09:15:00.000Z",
+    "source": "nyt",
+    "sourceName": "The New York Times",
+    "author": "Owen Blake",
+    "category": "health"
+  }
+]

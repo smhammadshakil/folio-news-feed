@@ -1,0 +1,143 @@
+[
+  {
+    "id": "guardian:1",
+    "title": "Climate desk notes",
+    "summary": "A sample brief on how coastal cities are rewriting storm plans.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/1",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-1/800/450",
+    "publishedAt": "2026-11-07T08:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Mina Rahman",
+    "category": "science"
+  },
+  {
+    "id": "guardian:2",
+    "title": "Parliament returns to a crowded calendar",
+    "summary": "Sample copy about a week of hearings and late votes.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/2",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-2/800/450",
+    "publishedAt": "2026-11-05T09:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Jonah Ellis",
+    "category": "politics"
+  },
+  {
+    "id": "guardian:3",
+    "title": "Markets open quiet after a long weekend",
+    "summary": "Sample copy about a flat morning on trading floors.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/3",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-3/800/450",
+    "publishedAt": "2026-11-03T10:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Priya Shah",
+    "category": "business"
+  },
+  {
+    "id": "guardian:4",
+    "title": "A smaller battery with a longer memory",
+    "summary": "Sample copy about a lab prototype shown to reporters.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/4",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-4/800/450",
+    "publishedAt": "2026-11-01T11:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Helena Ortiz",
+    "category": "technology"
+  },
+  {
+    "id": "guardian:5",
+    "title": "Night trains pick up new passengers",
+    "summary": "Sample copy about sleeper routes adding a second departure.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/5",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-5/800/450",
+    "publishedAt": "2026-10-30T12:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "category": "world"
+  },
+  {
+    "id": "guardian:6",
+    "title": "Clinics test a shorter waiting room",
+    "summary": "Sample copy about appointment boards in three cities.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/6",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-6/800/450",
+    "publishedAt": "2026-10-28T08:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Chris Adelayo",
+    "category": "health"
+  },
+  {
+    "id": "guardian:7",
+    "title": "The derby ends level after a late save",
+    "summary": "Sample copy about a match that turned on one stop.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/7",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-7/800/450",
+    "publishedAt": "2026-10-26T09:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "category": "sports"
+  },
+  {
+    "id": "guardian:8",
+    "title": "A retrospective hangs the sketches first",
+    "summary": "Sample copy about a museum putting studies in the front room.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/8",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-8/800/450",
+    "publishedAt": "2026-10-24T10:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Noah Berg",
+    "category": "culture"
+  },
+  {
+    "id": "guardian:9",
+    "title": "A column on reading the corrections",
+    "summary": "Sample copy arguing that the small print is the story.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/9",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-9/800/450",
+    "publishedAt": "2026-10-22T11:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Leila Costa",
+    "category": "opinion"
+  },
+  {
+    "id": "guardian:10",
+    "title": "Rivers stay high through the weekend",
+    "summary": "Sample copy about flood gates and school closures.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/10",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-10/800/450",
+    "publishedAt": "2026-10-20T12:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Mina Rahman",
+    "category": "world"
+  },
+  {
+    "id": "guardian:11",
+    "title": "Startup folders get a new owner",
+    "summary": "Sample copy about an acquisition that keeps the newsroom tools.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/11",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-11/800/450",
+    "publishedAt": "2026-10-18T08:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "category": "business"
+  },
+  {
+    "id": "guardian:12",
+    "title": "The comment pages argue over the clocks",
+    "summary": "Sample copy about the twice-yearly time change.",
+    "url": "https://www.theguardian.com/folio/sample/guardian/12",
+    "imageUrl": "https://picsum.photos/seed/folio-guardian-12/800/450",
+    "publishedAt": "2026-10-16T09:15:00.000Z",
+    "source": "guardian",
+    "sourceName": "The Guardian",
+    "author": "Owen Blake",
+    "category": "opinion"
+  }
+]

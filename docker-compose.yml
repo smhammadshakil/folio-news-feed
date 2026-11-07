@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "4180:4180"
+    environment:
+      PORT: "4180"
+      DATA_MODE: ${DATA_MODE:-fixture}
+      GUARDIAN_API_KEY: ${GUARDIAN_API_KEY:-}
+      NYT_API_KEY: ${NYT_API_KEY:-}
+      NEWSAPI_API_KEY: ${NEWSAPI_API_KEY:-}
