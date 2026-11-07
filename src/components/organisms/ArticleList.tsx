@@ -4,7 +4,7 @@ import { ArticleCard } from "./ArticleCard.tsx";
 
 export function ArticleList({ articles }: { articles: Article[] }) {
   return (
-    <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr", xl: "1fr 1fr 1fr" }} gap="6">
+    <Grid templateColumns={{ base: "1fr", md: "repeat(2, minmax(0, 1fr))" }} gap="6">
       {articles.map((article) => (
         <ArticleCard key={article.id} article={article} />
       ))}

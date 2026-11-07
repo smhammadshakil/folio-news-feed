@@ -10,14 +10,15 @@ export function ArticleCard({ article }: { article: Article }) {
   const showImage = Boolean(article.imageUrl) && !imageFailed;
   const storyHref = `/story?id=${encodeURIComponent(article.id)}`;
   return (
-    <Box as="article" borderWidth="1px" borderColor="line" bg="paper" overflow="hidden">
+    <Box as="article" minW="0" borderWidth="1px" borderColor="line" bg="paper" overflow="hidden">
       {showImage ? (
-        <Link asChild>
+        <Link asChild display="block" w="full">
           <RouterLink to={storyHref}>
             <Image
               src={article.imageUrl}
               alt=""
-              w="100%"
+              w="full"
+              minW="0"
               aspectRatio="16/9"
               objectFit="cover"
               onError={() => setImageFailed(true)}
