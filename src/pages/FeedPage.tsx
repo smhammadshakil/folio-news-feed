@@ -1,5 +1,5 @@
 import { Box, Button, Drawer, Heading, Stack, Text } from "@chakra-ui/react";
-import { SOURCE_CATALOG, SOURCE_IDS } from "@shared/sources.ts";
+import { SOURCE_CATALOG } from "@shared/sources.ts";
 import type { Article, ArticlePage, ArticleQuery } from "@shared/article.ts";
 import { defaultPreferences, type Preferences } from "@shared/preferences.ts";
 import { mergePageQuery, paramsFromEffective } from "@shared/query.ts";
@@ -131,9 +131,24 @@ export function FeedPage() {
   }, [queryKey, reloadToken, query, parsed]);
 
   function clearFilters() {
-    commit({ sources: [...SOURCE_IDS], categories: [], authors: [], page: 1 });
+    commit({
+      sources: [...preferences.sources],
+      categories: [...preferences.categories],
+      authors: [...preferences.authors],
+      page: 1,
+    });
     setKeyword("");
   }
+
+  const showClearFilters = Boolean(
+    query &&
+      (query.q ||
+        query.from ||
+        query.to ||
+        !sameMembers(query.sources, preferences.sources) ||
+        !sameMembers(query.categories, preferences.categories) ||
+        !sameMembers(query.authors, preferences.authors)),
+  );
 
   function openPreferences() {
     if (query) {
@@ -165,6 +180,8 @@ export function FeedPage() {
             onSearchSubmit={() => query && commit({ ...query, q: keyword.trim() || undefined, page: 1 })}
             onOpenFilters={() => setFiltersOpen(true)}
             onOpenPreferences={openPreferences}
+            showClearFilters={showClearFilters}
+            onClearFilters={clearFilters}
           />
         }
         sidebar={query ? <FilterPanel query={query} sources={catalog} onChange={commit} /> : null}
@@ -285,6 +302,12 @@ function classify(page: ArticlePage, total: number): FeedStatus {
   if (total === 0) return "empty";
   if (errors.length > 0) return "partial";
   return "ready";
+}
+
+function sameMembers(left: readonly string[], right: readonly string[]): boolean {
+  if (left.length !== right.length) return false;
+  const bag = new Set(right);
+  return left.every((item) => bag.has(item));
 }
 
 function mergeUnique(current: Article[], incoming: Article[]): Article[] {
