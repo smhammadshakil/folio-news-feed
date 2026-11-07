@@ -15,7 +15,7 @@ docker compose up --build
 
 Open http://localhost:4180.
 
-Leave the keys blank to browse sample articles. For live news, set the three keys and `DATA_MODE=live`, then run `docker compose up --build` again. If `DATA_MODE` is omitted and at least one key is present, Folio calls the sources that have keys.
+Leave the keys blank to browse sample articles. For live news, fill in the three keys and run `docker compose up --build` again. A key selects live news even if `DATA_MODE` is unset or set to `fixture`. A source with a blank key reports that its key is missing, and the other sources still return articles.
 
 | Variable | Signup |
 | --- | --- |

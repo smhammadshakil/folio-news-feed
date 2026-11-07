@@ -21,6 +21,11 @@ describe("parseArticleQuery", () => {
     expect(parsed.query.page).toBe(2);
   });
 
+  it("rejects a search longer than 200 characters", () => {
+    const parsed = parseArticleQuery(new URLSearchParams({ q: "a".repeat(201) }));
+    expect(parsed.ok).toBe(false);
+  });
+
   it("rejects an unknown source and a bad date", () => {
     expect(parseArticleQuery(new URLSearchParams("source=bbc")).ok).toBe(false);
     expect(parseArticleQuery(new URLSearchParams("from=2026-13-01")).ok).toBe(false);

@@ -27,10 +27,19 @@ export function loadDotEnv(text: string, target: NodeJS.ProcessEnv = process.env
 }
 
 export function readEnv(source: NodeJS.ProcessEnv = process.env): Env {
-  const requested = source.DATA_MODE;
-  const hasKey = Boolean(source.GUARDIAN_API_KEY?.trim() || source.NYT_API_KEY?.trim() || source.NEWSAPI_API_KEY?.trim());
-  const mode = requested ?? (hasKey ? "live" : "fixture");
-  if (mode !== "fixture" && mode !== "live") {
+  const requested = source.DATA_MODE?.trim() || undefined;
+  const guardianKey = source.GUARDIAN_API_KEY?.trim() ?? "";
+  const nytKey = source.NYT_API_KEY?.trim() ?? "";
+  const newsApiKey = source.NEWSAPI_API_KEY?.trim() ?? "";
+  const hasKey = Boolean(guardianKey || nytKey || newsApiKey);
+  let mode: DataMode;
+  if (hasKey) {
+    mode = "live";
+  } else if (requested === undefined || requested === "fixture") {
+    mode = "fixture";
+  } else if (requested === "live") {
+    mode = "live";
+  } else {
     throw new Error("DATA_MODE must be fixture or live");
   }
   const fallback = source.NODE_ENV === "production" ? 4180 : 4181;
@@ -39,8 +48,8 @@ export function readEnv(source: NodeJS.ProcessEnv = process.env): Env {
   return {
     dataMode: mode,
     port,
-    guardianKey: source.GUARDIAN_API_KEY?.trim() ?? "",
-    nytKey: source.NYT_API_KEY?.trim() ?? "",
-    newsApiKey: source.NEWSAPI_API_KEY?.trim() ?? "",
+    guardianKey,
+    nytKey,
+    newsApiKey,
   };
 }

@@ -14,6 +14,7 @@ export function SearchField({
       aria-label="Search"
       value={value}
       placeholder="Search headlines"
+      maxLength={200}
       bg="paper"
       borderColor="line"
       onChange={(event) => onChange(event.target.value)}

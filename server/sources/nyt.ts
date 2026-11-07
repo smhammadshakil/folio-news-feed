@@ -22,6 +22,19 @@ export function clearNytCache(): void {
   cache.clear();
 }
 
+const MAX_NYT_CACHE = 100;
+
+function rememberNyt(key: string, docs: NytDoc[], now: number): void {
+  for (const [stored, entry] of cache) {
+    if (entry.expires <= now) cache.delete(stored);
+  }
+  if (cache.size >= MAX_NYT_CACHE) {
+    const oldest = cache.keys().next().value;
+    if (oldest) cache.delete(oldest);
+  }
+  cache.set(key, { expires: now + 60_000, docs });
+}
+
 export function nytImage(multimedia: NytDoc["multimedia"]): string | undefined {
   if (!Array.isArray(multimedia)) return undefined;
   const image = multimedia.find((item) => item.type === "image" || Boolean(item.url));
@@ -71,15 +84,16 @@ export class NytSource implements NewsSource {
     if (desks) url.searchParams.set("fq", desks);
 
     const key = url.toString();
+    const now = Date.now();
     const hit = cache.get(key);
-    if (hit && hit.expires > Date.now()) return mapNyt(hit.docs);
+    if (hit && hit.expires > now) return mapNyt(hit.docs);
 
     try {
       const response = await fetch(url, { signal });
       if (!response.ok) throw mapHttpError("New York Times", response.status);
       const payload = (await response.json()) as { response?: { docs?: NytDoc[] } };
       const docs = (payload.response?.docs ?? []).slice(0, PAGE_SIZE);
-      cache.set(key, { expires: Date.now() + 60_000, docs });
+      rememberNyt(key, docs, now);
       return mapNyt(docs);
     } catch (error) {
       mapThrown("New York Times", error);

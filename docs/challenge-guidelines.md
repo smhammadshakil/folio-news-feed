@@ -99,7 +99,7 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Open `http://localhost:4180`. Leave the keys blank for sample articles. For live news, fill `GUARDIAN_API_KEY`, `NYT_API_KEY`, and `NEWSAPI_API_KEY`, set `DATA_MODE=live`, and run the same command again. `GET /api/health` reports `fixture` or `live`.
+Open `http://localhost:4180`. Leave the keys blank for sample articles. For live news, fill `GUARDIAN_API_KEY`, `NYT_API_KEY`, and `NEWSAPI_API_KEY` and run the same command again. Any non-empty key selects live news. `GET /api/health` reports `fixture` or `live`.
 
 ## DRY
 

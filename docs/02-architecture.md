@@ -246,7 +246,7 @@ Opening `/` with an empty query string shows the saved feed. Opening a shared UR
 
 | Variable | Required | Default |
 | --- | --- | --- |
-| `DATA_MODE` | no | `fixture`, or `live` when any API key is set and this variable is omitted |
+| `DATA_MODE` | no | Ignored when any API key is set (`live`). With no keys, `fixture` unless this is explicitly `live`. |
 | `GUARDIAN_API_KEY` | only when live | empty |
 | `NYT_API_KEY` | only when live | empty |
 | `NEWSAPI_API_KEY` | only when live | empty |

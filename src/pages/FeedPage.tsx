@@ -172,7 +172,7 @@ export function FeedPage() {
           <>
             {showFixture ? (
               <Box role="status" borderWidth="1px" borderColor="line" px="4" py="3">
-                Showing sample articles. Add API keys and set DATA_MODE=live for today's news.
+                Showing sample articles. Live headlines load when this server has the news API keys.
               </Box>
             ) : null}
             {showHealth && pageInfo ? <SourceHealth sources={pageInfo.sources} /> : null}

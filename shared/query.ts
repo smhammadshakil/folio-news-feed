@@ -64,11 +64,12 @@ export function parseArticleQuery(params: URLSearchParams): ParseResult {
   const pageResult = readPage(params);
   if (!pageResult.ok) return pageResult;
 
-  const q = params.get("q")?.trim() || undefined;
+  const keyword = readKeyword(params);
+  if (!keyword.ok) return keyword;
   return {
     ok: true,
     query: {
-      q,
+      q: keyword.q,
       from: dates.from,
       to: dates.to,
       categories,
@@ -115,10 +116,13 @@ export function mergePageQuery(preferences: Preferences, params: URLSearchParams
         .filter(Boolean)
     : preferences.authors;
 
+  const keyword = readKeyword(params);
+  if (!keyword.ok) return keyword;
+
   return {
     ok: true,
     query: {
-      q: params.has("q") ? params.get("q")?.trim() || undefined : undefined,
+      q: keyword.q,
       from: dates.from,
       to: dates.to,
       categories,
@@ -159,6 +163,13 @@ export function toApiSearchParams(query: ArticleQuery): URLSearchParams {
   query.authors.forEach((author) => params.append("author", author));
   params.set("page", String(query.page));
   return params;
+}
+
+function readKeyword(params: URLSearchParams): { ok: true; q?: string } | { ok: false; error: string } {
+  if (!params.has("q")) return { ok: true };
+  const q = params.get("q")?.trim() || undefined;
+  if (q && q.length > 200) return { ok: false, error: "Search is limited to 200 characters" };
+  return { ok: true, q };
 }
 
 function readDates(params: URLSearchParams): { ok: true; from?: string; to?: string } | { ok: false; error: string } {
