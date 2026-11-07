@@ -5,6 +5,7 @@ import { toggleWithFloor } from "@shared/selection.ts";
 import type { SourceId } from "@shared/sources.ts";
 import { addDays, dateLabel, localISO } from "../../lib/dates.ts";
 import type { SourceCatalogItem } from "../../api/client.ts";
+import { IconButton } from "../atoms/IconButton.tsx";
 
 const CATEGORY_IDS = CATEGORIES.map((category) => category.id);
 
@@ -32,7 +33,10 @@ export function FilterPanel({
   return (
     <Stack gap="6">
       <Fieldset.Root>
-        <Fieldset.Legend fontWeight="600">Date</Fieldset.Legend>
+        <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
+          Date
+          <ClearMark label="Clear date" onClick={() => apply({ from: undefined, to: undefined })} />
+        </Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="2">
             <Button size="sm" minH="44px" variant={activeDate === "Today" ? "solid" : "outline"} bg={activeDate === "Today" ? "accent" : undefined} color={activeDate === "Today" ? "accentFg" : "ink"} borderColor="line" onClick={() => setPreset(0)}>
@@ -50,7 +54,10 @@ export function FilterPanel({
         </Fieldset.Content>
       </Fieldset.Root>
       <Fieldset.Root>
-        <Fieldset.Legend fontWeight="600">Category</Fieldset.Legend>
+        <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
+          Category
+          <ClearMark label="Clear category" onClick={() => apply({ categories: [] })} />
+        </Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="1">
             {CATEGORIES.map((category) => (
@@ -69,7 +76,10 @@ export function FilterPanel({
         </Fieldset.Content>
       </Fieldset.Root>
       <Fieldset.Root>
-        <Fieldset.Legend fontWeight="600">Source</Fieldset.Legend>
+        <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
+          Source
+          <ClearMark label="Clear source" onClick={() => apply({ sources: sourceIds })} />
+        </Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="1">
             {sources.map((source) => (
@@ -88,6 +98,16 @@ export function FilterPanel({
         </Fieldset.Content>
       </Fieldset.Root>
     </Stack>
+  );
+}
+
+function ClearMark({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <IconButton aria-label={label} onClick={onClick} minW="44px" minH="44px" color="accent">
+      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
+        <path d="M2 2 L12 12 M12 2 L2 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    </IconButton>
   );
 }
 
