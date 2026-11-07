@@ -1,27 +1,3 @@
 body {
   margin: 0;
 }
-
-.folio-fold {
-  fill: #e6dccb;
-}
-
-.folio-rule {
-  fill: #8f1d2c;
-}
-
-.folio-column {
-  fill: #f4f0e6;
-}
-
-html.dark .folio-fold {
-  fill: #3a342c;
-}
-
-html.dark .folio-rule {
-  fill: #e06a78;
-}
-
-html.dark .folio-column {
-  fill: #161410;
-}
