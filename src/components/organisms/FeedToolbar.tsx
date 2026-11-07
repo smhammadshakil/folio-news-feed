@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { Logo } from "../atoms/Logo.tsx";
 import { SearchField } from "../atoms/SearchField.tsx";
 import { ColorModeButton } from "./ColorModeButton.tsx";
 
@@ -20,7 +21,10 @@ export function FeedToolbar({
     <Flex direction={{ base: "column", md: "row" }} gap="3" align={{ md: "end" }} py="4">
       <Heading as="h1" size="xl" fontFamily="heading" lineHeight="1">
         <Link asChild color="ink" _hover={{ textDecoration: "none" }}>
-          <RouterLink to="/">Folio</RouterLink>
+          <RouterLink to="/" style={{ display: "inline-flex", alignItems: "center", gap: "0.55rem" }}>
+            <Logo />
+            Folio
+          </RouterLink>
         </Link>
       </Heading>
       <Box flex="1">
