@@ -28,6 +28,9 @@ describe("source mappers", () => {
     expect(nytImage([{ type: "image", url: "images/2026/sample.jpg" }])).toBe(
       "https://static01.nyt.com/images/2026/sample.jpg",
     );
+    expect(nytImage({ default: { url: "https://static01.nyt.com/images/2026/lead.jpg" } })).toBe(
+      "https://static01.nyt.com/images/2026/lead.jpg",
+    );
     const [article] = mapNyt([
       {
         _id: "nyt-1",

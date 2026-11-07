@@ -13,7 +13,9 @@ type NytDoc = {
   pub_date?: string;
   news_desk?: string;
   byline?: { original?: string };
-  multimedia?: { type?: string; url?: string; legacy?: { xlarge?: string } }[];
+  multimedia?:
+    | { type?: string; url?: string; legacy?: { xlarge?: string } }[]
+    | { caption?: string; default?: { url?: string }; url?: string };
 };
 
 const cache = new Map<string, { expires: number; docs: NytDoc[] }>();
@@ -36,6 +38,9 @@ function rememberNyt(key: string, docs: NytDoc[], now: number): void {
 }
 
 export function nytImage(multimedia: NytDoc["multimedia"]): string | undefined {
+  if (multimedia && !Array.isArray(multimedia)) {
+    return multimedia.default?.url ?? multimedia.url;
+  }
   if (!Array.isArray(multimedia)) return undefined;
   const image = multimedia.find((item) => item.type === "image" || Boolean(item.url));
   const raw = image?.url ?? image?.legacy?.xlarge;

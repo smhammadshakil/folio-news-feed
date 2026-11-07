@@ -8,6 +8,8 @@ import { aggregate } from "./aggregate.js";
 import { loadDotEnv, readEnv } from "./env.js";
 import { allowSearch } from "./limit.js";
 import { resolveSource } from "./sources/index.js";
+import { loadStory } from "./story.js";
+import { SourceError } from "./sources/types.js";
 
 if (existsSync(".env")) loadDotEnv(readFileSync(".env", "utf8"));
 
@@ -45,6 +47,26 @@ app.get("/api/articles", async (c) => {
     if (error instanceof Error && error.name === "AbortError") return c.body(null, 204);
     console.error(error instanceof Error ? error.message : "Article request failed");
     return c.json({ error: "The feed did not load" }, 500);
+  }
+});
+
+app.get("/api/article", async (c) => {
+  const forwarded = c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
+  const caller = (forwarded || c.req.header("x-real-ip") || "local").slice(0, 64);
+  if (!allowSearch(caller)) {
+    return c.json({ error: "Too many searches. Wait a minute and try again." }, 429);
+  }
+  const id = new URL(c.req.url).searchParams.get("id")?.trim() ?? "";
+  if (!id) return c.json({ error: "Missing story" }, 400);
+  try {
+    const story = await loadStory(id, env, c.req.raw.signal);
+    c.header("Cache-Control", "no-store");
+    return c.json(story);
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") return c.body(null, 204);
+    if (error instanceof SourceError) return c.json({ error: error.message }, 404);
+    console.error(error instanceof Error ? error.message : "Story request failed");
+    return c.json({ error: "The story did not load" }, 500);
   }
 });
 

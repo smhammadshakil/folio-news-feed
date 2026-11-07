@@ -16,6 +16,16 @@ export type Article = {
   category?: CategoryId;
 };
 
+export type StoryImage = {
+  url: string;
+  caption?: string;
+};
+
+export type ArticleDetail = Article & {
+  paragraphs: string[];
+  images: StoryImage[];
+};
+
 export type ArticleQuery = {
   q?: string;
   from?: string;

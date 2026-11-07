@@ -1,24 +1,29 @@
-import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Heading, Image, Link, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import type { Article } from "@shared/article.ts";
-import { ExternalLink } from "../atoms/ExternalLink.tsx";
 import { ArticleMeta } from "../molecules/ArticleMeta.tsx";
 import { AuthorLine } from "../molecules/AuthorLine.tsx";
 
 export function ArticleCard({ article }: { article: Article }) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = Boolean(article.imageUrl) && !imageFailed;
+  const storyHref = `/story?id=${encodeURIComponent(article.id)}`;
   return (
     <Box as="article" borderWidth="1px" borderColor="line" bg="paper" overflow="hidden">
       {showImage ? (
-        <Image
-          src={article.imageUrl}
-          alt=""
-          w="100%"
-          aspectRatio="16/9"
-          objectFit="cover"
-          onError={() => setImageFailed(true)}
-        />
+        <Link asChild>
+          <RouterLink to={storyHref}>
+            <Image
+              src={article.imageUrl}
+              alt=""
+              w="100%"
+              aspectRatio="16/9"
+              objectFit="cover"
+              onError={() => setImageFailed(true)}
+            />
+          </RouterLink>
+        </Link>
       ) : null}
       <Stack p="4" gap="2" align="start">
         <ArticleMeta
@@ -28,7 +33,9 @@ export function ArticleCard({ article }: { article: Article }) {
           publishedAt={article.publishedAt}
         />
         <Heading as="h2" size="md" fontFamily="heading" lineHeight="1.25">
-          <ExternalLink href={article.url}>{article.title}</ExternalLink>
+          <Link asChild color="ink" _hover={{ textDecoration: "none" }}>
+            <RouterLink to={storyHref}>{article.title}</RouterLink>
+          </Link>
         </Heading>
         {article.summary ? (
           <Text color="ink" lineClamp={2}>
@@ -36,7 +43,9 @@ export function ArticleCard({ article }: { article: Article }) {
           </Text>
         ) : null}
         <AuthorLine author={article.author} />
-        <ExternalLink href={article.url}>Read story</ExternalLink>
+        <Link asChild color="accent">
+          <RouterLink to={storyHref}>Open the story</RouterLink>
+        </Link>
       </Stack>
     </Box>
   );
