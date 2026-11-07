@@ -4,18 +4,21 @@ Folio is a personal news desk. It pulls articles from The Guardian, The New York
 
 The interface is React, TypeScript, and Chakra UI, arranged with Atomic Design. A small Hono server holds the API keys and returns one shared article shape. With no keys, the same screens run on bundled sample articles.
 
-## Run with Docker
+## Add a local env file
 
-Docker is the path to use for a review.
+Create `.env` in the project folder before you start the app. Copy the example, then paste your own keys into it. The file stays on your machine and is not committed.
 
 ```bash
 cp .env.example .env
-docker compose up --build
 ```
 
-Open http://localhost:4180.
+Open `.env` and set:
 
-Leave the keys blank to browse sample articles. For live news, fill in the three keys and run `docker compose up --build` again. A key selects live news even if `DATA_MODE` is unset or set to `fixture`. A source with a blank key reports that its key is missing, and the other sources still return articles.
+```bash
+GUARDIAN_API_KEY=your-guardian-key
+NYT_API_KEY=your-nyt-article-search-key
+NEWSAPI_API_KEY=your-newsapi-key
+```
 
 | Variable | Signup |
 | --- | --- |
@@ -23,15 +26,28 @@ Leave the keys blank to browse sample articles. For live news, fill in the three
 | `NYT_API_KEY` | https://developer.nytimes.com/ (Article Search) |
 | `NEWSAPI_API_KEY` | https://newsapi.org/register |
 
+Any non-empty key selects live news, even if `DATA_MODE` is unset or set to `fixture`. Leave every key blank only if you want the bundled sample articles. A source with a blank key reports that its key is missing, and the other sources still return articles.
+
+## Run with Docker
+
+Docker is the path to use for a review. The `.env` file from the step above must already be in the project folder.
+
+```bash
+docker compose up --build
+```
+
+Open http://localhost:4180.
+
 `curl http://localhost:4180/api/health` returns `{"ok":true,"mode":"fixture"}` or `"mode":"live"`.
 
-Stop the container with Ctrl+C.
+Stop the container with Ctrl+C. After you change a key, run `docker compose up --build` again.
 
 ## Run locally
 
+The `.env` file from the step above must already be in the project folder.
+
 ```bash
 npm install
-cp .env.example .env
 npm run dev
 ```
 
