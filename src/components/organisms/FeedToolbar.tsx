@@ -18,7 +18,7 @@ export function FeedToolbar({
   onOpenPreferences: () => void;
 }) {
   return (
-    <Flex direction={{ base: "column", md: "row" }} gap="3" align={{ md: "end" }} py="4">
+    <Flex direction={{ base: "column", md: "row" }} gap="3" align={{ md: "center" }} py="4">
       <Heading as="h1" size="xl" fontFamily="heading" lineHeight="1">
         <Link asChild color="ink" _hover={{ textDecoration: "none" }}>
           <RouterLink to="/" style={{ display: "inline-flex", alignItems: "center", gap: "0.55rem" }}>
