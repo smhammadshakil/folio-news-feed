@@ -5,7 +5,6 @@ import type { SourceId } from "@shared/sources.ts";
 import { useState } from "react";
 import { addDays, dateLabel, localISO } from "../../lib/dates.ts";
 import type { SourceCatalogItem } from "../../api/client.ts";
-import { IconButton } from "../atoms/IconButton.tsx";
 
 const CATEGORY_IDS = CATEGORIES.map((category) => category.id);
 
@@ -40,7 +39,6 @@ export function FilterPanel({
   const shownCategories = categoryDraft ?? query.categories;
   const sourceAll = sourceDraft === null && sourceIds.length > 0 && sourceIds.every((id) => query.sources.includes(id));
   const shownSources = sourceDraft ?? (sourceAll ? [] : query.sources);
-  const dateApplied = Boolean(query.from || query.to);
 
   function toggleCategory(id: CategoryId) {
     const current = categoryDraft ?? (categoryAll ? [] : query.categories);
@@ -67,10 +65,7 @@ export function FilterPanel({
   return (
     <Stack gap="6">
       <Fieldset.Root>
-        <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
-          Date
-          {dateApplied ? <ClearMark label="Clear date" onClick={() => apply({ from: undefined, to: undefined })} /> : null}
-        </Fieldset.Legend>
+        <Fieldset.Legend fontWeight="600">Date</Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="2">
             <Button size="sm" minH="44px" variant={activeDate === "Today" ? "solid" : "outline"} bg={activeDate === "Today" ? "accent" : undefined} color={activeDate === "Today" ? "accentFg" : "ink"} borderColor="line" onClick={() => setPreset(0)}>
@@ -136,16 +131,6 @@ export function FilterPanel({
         </Fieldset.Content>
       </Fieldset.Root>
     </Stack>
-  );
-}
-
-function ClearMark({ label, onClick }: { label: string; onClick: () => void }) {
-  return (
-    <IconButton aria-label={label} onClick={onClick} minW="44px" minH="44px" color="accent">
-      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none">
-        <path d="M2 2 L12 12 M12 2 L2 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    </IconButton>
   );
 }
 
