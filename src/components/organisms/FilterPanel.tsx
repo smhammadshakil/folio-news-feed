@@ -1,8 +1,8 @@
 import { Button, Checkbox, Fieldset, Input, Stack } from "@chakra-ui/react";
-import { CATEGORIES } from "@shared/categories.ts";
+import { CATEGORIES, type CategoryId } from "@shared/categories.ts";
 import type { ArticleQuery } from "@shared/article.ts";
-import { toggleWithFloor } from "@shared/selection.ts";
 import type { SourceId } from "@shared/sources.ts";
+import { useState } from "react";
 import { addDays, dateLabel, localISO } from "../../lib/dates.ts";
 import type { SourceCatalogItem } from "../../api/client.ts";
 import { IconButton } from "../atoms/IconButton.tsx";
@@ -21,6 +21,12 @@ export function FilterPanel({
   const today = localISO(new Date());
   const activeDate = dateLabel(query.from, query.to);
   const sourceIds = sources.map((source) => source.id);
+  const categoryKey = query.categories.join(",");
+  const sourceKey = query.sources.join(",");
+  const [categoryHold, setCategoryHold] = useState<{ key: string; draft: CategoryId[] } | null>(null);
+  const [sourceHold, setSourceHold] = useState<{ key: string; draft: SourceId[] } | null>(null);
+  const categoryDraft = categoryHold?.key === categoryKey ? categoryHold.draft : null;
+  const sourceDraft = sourceHold?.key === sourceKey ? sourceHold.draft : null;
 
   function apply(partial: Partial<ArticleQuery>) {
     onChange({ ...query, ...partial, page: 1 });
@@ -30,12 +36,40 @@ export function FilterPanel({
     apply({ from: localISO(addDays(new Date(), -daysBack)), to: today });
   }
 
+  const categoryAll = categoryDraft === null && query.categories.length === 0;
+  const shownCategories = categoryDraft ?? query.categories;
+  const sourceAll = sourceDraft === null && sourceIds.length > 0 && sourceIds.every((id) => query.sources.includes(id));
+  const shownSources = sourceDraft ?? (sourceAll ? [] : query.sources);
+  const dateApplied = Boolean(query.from || query.to);
+
+  function toggleCategory(id: CategoryId) {
+    const current = categoryDraft ?? (categoryAll ? [] : query.categories);
+    const next = current.includes(id) ? current.filter((item) => item !== id) : [...current, id];
+    if (next.length === 0) {
+      setCategoryHold({ key: categoryKey, draft: [] });
+      return;
+    }
+    setCategoryHold(null);
+    apply({ categories: next.length === CATEGORY_IDS.length ? [] : next });
+  }
+
+  function toggleSource(id: SourceId) {
+    const current = sourceDraft ?? (sourceAll ? [] : query.sources);
+    const next = current.includes(id) ? current.filter((item) => item !== id) : [...current, id];
+    if (next.length === 0) {
+      setSourceHold({ key: sourceKey, draft: [] });
+      return;
+    }
+    setSourceHold(null);
+    apply({ sources: sourceIds.filter((item) => next.includes(item)) });
+  }
+
   return (
     <Stack gap="6">
       <Fieldset.Root>
         <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
           Date
-          <ClearMark label="Clear date" onClick={() => apply({ from: undefined, to: undefined })} />
+          {dateApplied ? <ClearMark label="Clear date" onClick={() => apply({ from: undefined, to: undefined })} /> : null}
         </Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="2">
@@ -54,44 +88,48 @@ export function FilterPanel({
         </Fieldset.Content>
       </Fieldset.Root>
       <Fieldset.Root>
-        <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
-          Category
-          <ClearMark label="Clear category" onClick={() => apply({ categories: [] })} />
-        </Fieldset.Legend>
+        <Fieldset.Legend fontWeight="600">Category</Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="1">
+            <Choice label="All" checked={categoryAll} onChange={() => {
+              if (categoryAll) {
+                setCategoryHold({ key: categoryKey, draft: [] });
+                return;
+              }
+              setCategoryHold(null);
+              if (query.categories.length > 0) apply({ categories: [] });
+            }} />
             {CATEGORIES.map((category) => (
               <Choice
                 key={category.id}
                 label={category.label}
-                checked={query.categories.length === 0 || query.categories.includes(category.id)}
-                onChange={() =>
-                  apply({
-                    categories: toggleWithFloor(CATEGORY_IDS, query.categories, category.id, true),
-                  })
-                }
+                disabled={categoryAll}
+                checked={!categoryAll && shownCategories.includes(category.id)}
+                onChange={() => toggleCategory(category.id)}
               />
             ))}
           </Stack>
         </Fieldset.Content>
       </Fieldset.Root>
       <Fieldset.Root>
-        <Fieldset.Legend w="full" display="flex" alignItems="center" justifyContent="space-between" fontWeight="600">
-          Source
-          <ClearMark label="Clear source" onClick={() => apply({ sources: sourceIds })} />
-        </Fieldset.Legend>
+        <Fieldset.Legend fontWeight="600">Source</Fieldset.Legend>
         <Fieldset.Content>
           <Stack gap="1">
+            <Choice label="All" checked={sourceAll} onChange={() => {
+              if (sourceAll) {
+                setSourceHold({ key: sourceKey, draft: [] });
+                return;
+              }
+              setSourceHold(null);
+              if (!sourceIds.every((id) => query.sources.includes(id))) apply({ sources: sourceIds });
+            }} />
             {sources.map((source) => (
               <Choice
                 key={source.id}
                 label={source.name}
-                checked={query.sources.includes(source.id)}
-                onChange={() =>
-                  apply({
-                    sources: toggleWithFloor(sourceIds, query.sources, source.id, false) as SourceId[],
-                  })
-                }
+                disabled={sourceAll}
+                checked={!sourceAll && shownSources.includes(source.id)}
+                onChange={() => toggleSource(source.id)}
               />
             ))}
           </Stack>
@@ -111,9 +149,19 @@ function ClearMark({ label, onClick }: { label: string; onClick: () => void }) {
   );
 }
 
-function Choice({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) {
+function Choice({
+  checked,
+  disabled = false,
+  onChange,
+  label,
+}: {
+  checked: boolean;
+  disabled?: boolean;
+  onChange: () => void;
+  label: string;
+}) {
   return (
-    <Checkbox.Root checked={checked} onCheckedChange={onChange} minH="44px" alignItems="center">
+    <Checkbox.Root checked={checked} disabled={disabled} onCheckedChange={onChange} minH="44px" alignItems="center">
       <Checkbox.HiddenInput />
       <Checkbox.Control />
       <Checkbox.Label>{label}</Checkbox.Label>
