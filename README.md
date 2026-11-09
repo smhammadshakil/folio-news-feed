@@ -117,18 +117,12 @@ Each clip searches for a headline, scrolls the feed, and changes the date and ca
 
 ### Desktop
 
-<video src="docs/demo/desktop.mp4" width="960" controls></video>
-
-[desktop.mp4](docs/demo/desktop.mp4)
+![Desktop](docs/demo/desktop.gif)
 
 ### Tablet
 
-<video src="docs/demo/tablet.mp4" width="420" controls></video>
-
-[tablet.mp4](docs/demo/tablet.mp4)
+![Tablet](docs/demo/tablet.gif)
 
 ### Phone
 
-<video src="docs/demo/phone.mp4" width="320" controls></video>
-
-[phone.mp4](docs/demo/phone.mp4)
+![Phone](docs/demo/phone.gif)
