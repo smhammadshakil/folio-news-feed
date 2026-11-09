@@ -110,3 +110,25 @@ The build notes live in `docs/`:
 6. [Implementation steps](docs/06-implementation-steps.md)
 7. [Docker](docs/07-docker.md)
 8. [Engineering principles](docs/08-engineering-principles.md)
+
+## Demo
+
+Each clip searches for a headline, scrolls the feed, and changes the date and category filters.
+
+### Desktop
+
+<video src="docs/demo/desktop.mp4" width="960" controls></video>
+
+[desktop.mp4](docs/demo/desktop.mp4)
+
+### Tablet
+
+<video src="docs/demo/tablet.mp4" width="420" controls></video>
+
+[tablet.mp4](docs/demo/tablet.mp4)
+
+### Phone
+
+<video src="docs/demo/phone.mp4" width="320" controls></video>
+
+[phone.mp4](docs/demo/phone.mp4)
